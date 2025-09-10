@@ -26,10 +26,12 @@ This project uses **GSE164498 ATAC-seq** data from GEO.
 To download the full dataset:
 ```bash
 bash scripts/download_data.sh
+```
 
 ## Directory Structure
 
-``` vrnn-clustering/
+```
+vrnn-clustering/
 ├── main.py
 ├── requirements.txt
 ├── README.md
@@ -40,7 +42,8 @@ bash scripts/download_data.sh
 └── src/
     ├── models.py
     ├── train.py
-    └── utils.py ```
+    └── utils.py
+```
 
 ## Installation
 ```
