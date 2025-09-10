@@ -13,7 +13,8 @@ Identify genes with similar expression dynamics to candidate genes (e.g., IRF1, 
 
 Enable follow-up CRE analysis of these gene modules.
 
-![Clustering results](image/2000_genes_range.png)
+![Clustering trajectories(from randomly selected genes per cluster)][image/2000_genes_clusters.png]
+![Clustering results(overall range)](image/2000_genes_range.png)
 
 ## Directory Structure
 
