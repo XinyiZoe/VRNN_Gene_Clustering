@@ -32,7 +32,7 @@ Enable follow-up CRE analysis of these gene modules.
 ![Clustering trajectories (from randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)
 ![Clustering results(overall range)](results/figures/2000_genes_k=5_range.png)
 
-# Data
+## Data
 
 This project uses **GSE164498 scATAC-seq** data from GEO.
 
