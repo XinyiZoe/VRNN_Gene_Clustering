@@ -16,6 +16,17 @@ Enable follow-up CRE analysis of these gene modules.
 ![Clustering trajectories (from randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)
 ![Clustering results(overall range)](results/figures/2000_genes_k=5_range.png)
 
+# Data
+
+This project uses **GSE164498 ATAC-seq** data from GEO.
+
+- `sample_GSE164498_subset.csv` (53 MB): small demo subset to test the pipeline quickly.
+- Full dataset: [GSE164498 on GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164498)
+
+To download the full dataset:
+```bash
+bash scripts/download_data.sh
+
 ## Directory Structure
 
 ```
