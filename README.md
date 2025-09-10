@@ -2,6 +2,22 @@
 
 This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene expression dynamics from single-cell RNA-seq data. The learned latent space is used to cluster genes based on their dynamic profiles in response to stimulation (e.g., IFNγ). This enables identification of gene clusters (such as fast vs. slow responders like IRF1 vs. CXCL9/10) and downstream inference of potential cis-regulatory elements (CREs).
 
+## Quick Start
+
+Clone the repository, install dependencies, and run the pipeline on the included sample dataset:
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/XinyiZoe/VRNN_Gene_Clustering.git
+cd VRNN_Gene_Clustering
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the model on the sample subset (53 MB from GSE164498)
+python main.py --input data/sample_GSE164498_subset.csv --output results/demo.png
+```
+
 ## Project Goal
 We aim to:
 
@@ -51,13 +67,10 @@ pip install -r requirements.txt
 ```
 
 ## Input Data Format
-Select the 1000 most variable genes from your scRNA-seq data. 
-Then, place your scRNA-seq matrix in data/master_sheet.csv.
-The expected format:
 
 Rows: cells 
 
-columns: Cell_ID, CellType, Time_numerics, followed by gene expression
+columns: Cell_ID, CellType, Time_numerics, followed by chromatin accessibility amtrix.
 
 By default, the model uses the first 1000 genes after column index 3. You can modify this in main.py.
 Make sure to sort the cells by time nuumerics (earliest to latest) as this model assumes cells are ordered by time. 
