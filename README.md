@@ -28,7 +28,6 @@ vrnn-clustering/
     ├── models.py
     ├── train.py
     └── utils.py
-
 ```
 
 ## Installation
