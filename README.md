@@ -68,9 +68,7 @@ pip install -r requirements.txt
 
 ## Input Data Format
 
-Rows: cells 
-
-columns: Cell_ID, CellType, Time_numerics, followed by chromatin accessibility amtrix.
+The ATAC-seq dataset is structured with metadata columns (Cell_ID, CellType, Time_numerics) followed by a gene activity (accessibility) matrix, where each column represents a gene and each entry reflects the accessibility score inferred for that gene in a given cell.
 
 By default, the model uses the first 1000 genes after column index 3. You can modify this in main.py.
 Make sure to sort the cells by time nuumerics (earliest to latest) as this model assumes cells are ordered by time. 
