@@ -20,16 +20,15 @@ Enable follow-up CRE analysis of these gene modules.
 
 ```
 vrnn-clustering/
-├── main.py                 # Entry point: trains VRNN, projects latents, clusters genes
-├── requirements.txt        # Python dependencies
-├── README.md               # You are here
-├── results/                # Example outputs (plots, cluster CSVs)
-    ├── csv  
-    ├── figures
+├── main.py
+├── requirements.txt
+├── README.md
+├── results/              # Example plots/figures
 └── src/
-    ├── models.py           # VRNN model & loss
-    ├── train.py            # Training loop
-    └── utils.py            # Tensor creation, UMAP, clustering, plot
+    ├── models.py
+    ├── train.py
+    └── utils.py
+
 ```
 
 ## Installation
