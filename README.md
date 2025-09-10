@@ -29,8 +29,7 @@ bash scripts/download_data.sh
 
 ## Directory Structure
 
-```
-vrnn-clustering/
+``` vrnn-clustering/
 ├── main.py
 ├── requirements.txt
 ├── README.md
@@ -41,8 +40,7 @@ vrnn-clustering/
 └── src/
     ├── models.py
     ├── train.py
-    └── utils.py
-```
+    └── utils.py ```
 
 ## Installation
 ```
