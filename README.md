@@ -34,11 +34,15 @@ vrnn-clustering/
 ├── main.py
 ├── requirements.txt
 ├── README.md
-├── results/              # Example plots/figures
+├── LICENSE
+├── data/                  # Sample dataset (subset of GSE164498)
+├── results/               # Example plots/figures
+├── scripts/               # Utility scripts (e.g., download_data.sh)
 └── src/
     ├── models.py
     ├── train.py
     └── utils.py
+
 ```
 
 ## Installation
