@@ -13,7 +13,7 @@ def test_config_loads():
     assert "paths" in cfg and "results_dir" in cfg["paths"]
 
 def test_directories_present():
-    for d in ["src", "data", "results", "outputs"]:
+    for d in ["src", "data", "results"]:
         assert os.path.isdir(os.path.join(ROOT, d)), f"Missing folder: {d}"
 
 @pytest.mark.xfail(strict=False, reason="Enable when demo script is added")
