@@ -34,7 +34,7 @@ Enable follow-up CRE analysis of these gene modules.
 
 # Data
 
-This project uses **GSE164498 ATAC-seq** data from GEO.
+This project uses **GSE164498 bulk ATAC-seq** data from GEO.
 
 - `sample_GSE164498_subset.csv` (53 MB): the top 2000 most variable genes from m1 24 hours data. 
 - Full dataset: [GSE164498 on GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164498)
