@@ -79,6 +79,8 @@ include methods that:
 - save each cluster to .csv format
 - plot selected genes based on gene names
   
+## License
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 
 
