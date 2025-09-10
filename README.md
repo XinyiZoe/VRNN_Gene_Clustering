@@ -36,7 +36,7 @@ Enable follow-up CRE analysis of these gene modules.
 
 This project uses **GSE164498 ATAC-seq** data from GEO.
 
-- `sample_GSE164498_subset.csv` (53 MB): small demo subset to test the pipeline quickly.
+- `sample_GSE164498_subset.csv` (53 MB): the top 2000 most variable from m1 data for 24 hours. 
 - Full dataset: [GSE164498 on GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164498)
 
 To download the full dataset:
