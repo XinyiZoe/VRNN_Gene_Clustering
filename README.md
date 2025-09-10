@@ -23,7 +23,9 @@ vrnn-clustering/
 ├── main.py                 # Entry point: trains VRNN, projects latents, clusters genes
 ├── requirements.txt        # Python dependencies
 ├── README.md               # You are here
-├── outputs/                # Example outputs (plots, cluster CSVs)
+├── results/                # Example outputs (plots, cluster CSVs)
+    ├── csv  
+    ├── figures
 └── src/
     ├── models.py           # VRNN model & loss
     ├── train.py            # Training loop
