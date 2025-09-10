@@ -1,6 +1,6 @@
 # VRNN_Gene_Clustering for Single-Cell RNA Seq
 
-This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene expression dynamics from single-cell RNA-seq data. The learned latent space is used to cluster genes based on their dynamic profiles in response to stimulation (e.g., IFNγ). This enables identification of gene clusters (such as fast vs. slow responders like IRF1 vs. CXCL9/10) and downstream inference of potential cis-regulatory elements (CREs).
+This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene expression dynamics from single-cell ATAC-seq data. The learned latent space is used to cluster genes based on their dynamic profiles in response to stimulation (e.g., IFNγ). This enables identification of gene clusters (such as fast vs. slow responders like IRF1 vs. CXCL9/10) and downstream inference of potential cis-regulatory elements (CREs).
 
 ## Quick Start
 
