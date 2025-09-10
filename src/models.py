@@ -3,6 +3,7 @@
 import torch
 import torch.nn as nn
 
+
 class VRNNCell(nn.Module):
     def __init__(self, x_dim, h_dim, z_dim):
         super(VRNNCell, self).__init__()
@@ -12,21 +13,11 @@ class VRNNCell(nn.Module):
 
         self.lstm = nn.LSTMCell(x_dim + z_dim, h_dim)
 
-        self.encoder = nn.Sequential(
-            nn.Linear(h_dim + x_dim, 64),
-            nn.ReLU(),
-            nn.Linear(64, 64),
-            nn.ReLU()
-        )
+        self.encoder = nn.Sequential(nn.Linear(h_dim + x_dim, 64), nn.ReLU(), nn.Linear(64, 64), nn.ReLU())
         self.enc_mean = nn.Linear(64, z_dim)
         self.enc_logvar = nn.Linear(64, z_dim)
 
-        self.prior = nn.Sequential(
-            nn.Linear(h_dim, 64),
-            nn.ReLU(),
-            nn.Linear(64, 64),
-            nn.ReLU()
-        )
+        self.prior = nn.Sequential(nn.Linear(h_dim, 64), nn.ReLU(), nn.Linear(64, 64), nn.ReLU())
         self.prior_mean = nn.Linear(64, z_dim)
         self.prior_logvar = nn.Linear(64, z_dim)
 
@@ -104,12 +95,14 @@ def vrnn_loss_function(outputs, x, epoch, beta=1e-6, warmup_steps=1):
     mu_z_enc, logvar_z_enc = outputs["mu_z_enc"], outputs["logvar_z_enc"]
     mu_z_pri, logvar_z_pri = outputs["mu_z_pri"], outputs["logvar_z_pri"]
 
-    recon_nll = 0.5 * x_logvar + (x - x_mean)**2 / (2.0 * torch.exp(x_logvar))
+    recon_nll = 0.5 * x_logvar + (x - x_mean) ** 2 / (2.0 * torch.exp(x_logvar))
     recon_nll = torch.sum(recon_nll, dim=2)
 
-    kl = 0.5 * (logvar_z_pri - logvar_z_enc) + (
-        torch.exp(logvar_z_enc) + (mu_z_enc - mu_z_pri)**2
-    ) / (2.0 * torch.exp(logvar_z_pri)) - 0.5
+    kl = (
+        0.5 * (logvar_z_pri - logvar_z_enc)
+        + (torch.exp(logvar_z_enc) + (mu_z_enc - mu_z_pri) ** 2) / (2.0 * torch.exp(logvar_z_pri))
+        - 0.5
+    )
     kl = torch.sum(kl, dim=2)
 
     if warmup_steps > 0:

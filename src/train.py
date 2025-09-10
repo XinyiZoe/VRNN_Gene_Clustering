@@ -1,13 +1,14 @@
-
 import torch
 import numpy as np
 from sklearn.model_selection import train_test_split
 from src.models import vrnn_loss_function
 
+
 def batchify(data_tensor, batch_size):
     indices = torch.randperm(data_tensor.shape[0])
     for start in range(0, data_tensor.shape[0], batch_size):
-        yield data_tensor[indices[start:start + batch_size]]
+        yield data_tensor[indices[start : start + batch_size]]
+
 
 def train_vrnn(vrnn, data_tensor, epochs=2000, batch_size=400, beta=1e-5, device="cpu"):
     optimizer = torch.optim.Adam(vrnn.parameters(), lr=1e-4)

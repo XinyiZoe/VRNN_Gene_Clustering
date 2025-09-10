@@ -7,7 +7,7 @@ from src.utils import (
     plotting_umap,
     save_gene_clusters_to_csv,
     plot_selected_genes,
-    plot_clustered_gene_dynamics
+    plot_clustered_gene_dynamics,
 )
 
 # Load data
@@ -27,22 +27,11 @@ vrnn = vrnn.to(device)
 data_tensor = data_tensor.to(device)
 
 # Train the model
-vrnn, train_losses, test_losses = train_vrnn(
-    vrnn,
-    data_tensor=data_tensor,
-    epochs=2000,
-    batch_size=400,
-    beta=1e-6,
-    device=device
-)
+vrnn, train_losses, test_losses = train_vrnn(vrnn, data_tensor=data_tensor, epochs=2000, batch_size=400, beta=1e-6, device=device)
 
 # Run UMAP & k-clustering
 embedding, cluster_labels, z_avg = plotting_umap(
-    vrnn=vrnn,
-    data_tensor=data_tensor,
-    gene_names=list(gene_columns),
-    device=device,
-    n_clusters=6
+    vrnn=vrnn, data_tensor=data_tensor, gene_names=list(gene_columns), device=device, n_clusters=6
 )
 
 # Plot gene dynamics by cluster (confirm valid clustering)
@@ -54,7 +43,7 @@ plot_clustered_gene_dynamics(
     df=df,
     device=device,
     n_clusters=6,
-    genes_per_cluster=10
+    genes_per_cluster=10,
 )
 
 
@@ -66,17 +55,11 @@ save_gene_clusters_to_csv(
     device=device,
     n_clusters=6,
     output_dir="./outputs",
-    file_prefix="vrnn_clusters"
+    file_prefix="vrnn_clusters",
 )
 
 # Plot selected genes
 genes_of_interest = ["SOD2", "IL1B", "UBD", "GBP5", "CCL3"]
 plot_selected_genes(
-    vrnn=vrnn,
-    data_tensor=data_tensor,
-    gene_names=list(gene_columns),
-    genes_of_interest=genes_of_interest,
-    device=device
+    vrnn=vrnn, data_tensor=data_tensor, gene_names=list(gene_columns), genes_of_interest=genes_of_interest, device=device
 )
-
-

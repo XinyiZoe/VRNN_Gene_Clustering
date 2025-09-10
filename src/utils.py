@@ -9,6 +9,7 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 import umap
 
+
 def create_vrnn_tensors(df, genes, time_col, cell_id_col, approach='mean'):
     if approach == 'mean':
         df_mean = df.groupby(time_col)[genes].mean()
@@ -18,8 +19,19 @@ def create_vrnn_tensors(df, genes, time_col, cell_id_col, approach='mean'):
     return tensor
 
 
-def plotting_umap(vrnn, data_tensor, gene_names, device, n_neighbors=15, min_dist=0.1,
-                  n_components=2, add_gene_labels=True, apply_kmeans=True, n_clusters=3, random_state=42):
+def plotting_umap(
+    vrnn,
+    data_tensor,
+    gene_names,
+    device,
+    n_neighbors=15,
+    min_dist=0.1,
+    n_components=2,
+    add_gene_labels=True,
+    apply_kmeans=True,
+    n_clusters=3,
+    random_state=42,
+):
     vrnn.eval()
     with torch.no_grad():
         outputs = vrnn(data_tensor.to(device))
@@ -30,8 +42,9 @@ def plotting_umap(vrnn, data_tensor, gene_names, device, n_neighbors=15, min_dis
     cluster_labels = KMeans(n_clusters=n_clusters, random_state=random_state).fit_predict(z_avg) if apply_kmeans else None
 
     plt.figure(figsize=(10, 8))
-    sns.scatterplot(x=embedding[:, 0], y=embedding[:, 1], hue=cluster_labels.astype(str) if apply_kmeans else None,
-                    palette="Set1", s=80)
+    sns.scatterplot(
+        x=embedding[:, 0], y=embedding[:, 1], hue=cluster_labels.astype(str) if apply_kmeans else None, palette="Set1", s=80
+    )
     if add_gene_labels:
         for i, gene in enumerate(gene_names):
             plt.text(embedding[i, 0], embedding[i, 1], gene, fontsize=8, ha='right', va='top')
@@ -42,8 +55,19 @@ def plotting_umap(vrnn, data_tensor, gene_names, device, n_neighbors=15, min_dis
     plt.show()
     return embedding, cluster_labels, z_avg
 
-def plot_clustered_gene_dynamics(vrnn, data_tensor, z_latent_summary, gene_names, df, device,
-                                  time_column="Time_numeric", n_clusters=2, genes_per_cluster=10, random_state=42):
+
+def plot_clustered_gene_dynamics(
+    vrnn,
+    data_tensor,
+    z_latent_summary,
+    gene_names,
+    df,
+    device,
+    time_column="Time_numeric",
+    n_clusters=2,
+    genes_per_cluster=10,
+    random_state=42,
+):
     vrnn.eval()
     with torch.no_grad():
         outputs = vrnn(data_tensor.to(device))
@@ -72,8 +96,17 @@ def plot_clustered_gene_dynamics(vrnn, data_tensor, z_latent_summary, gene_names
     plt.show()
 
 
-def save_gene_clusters_to_csv(vrnn, data_tensor, gene_names, device, n_clusters=3,
-                               output_dir="./", file_prefix="gene_clusters", split_files=False, random_state=42):
+def save_gene_clusters_to_csv(
+    vrnn,
+    data_tensor,
+    gene_names,
+    device,
+    n_clusters=3,
+    output_dir="./",
+    file_prefix="gene_clusters",
+    split_files=False,
+    random_state=42,
+):
     vrnn.eval()
     with torch.no_grad():
         outputs = vrnn(data_tensor.to(device))
@@ -85,11 +118,11 @@ def save_gene_clusters_to_csv(vrnn, data_tensor, gene_names, device, n_clusters=
     if split_files:
         for i in range(n_clusters):
             df_sub = df_clusters[df_clusters["Cluster"] == i]
-            df_sub.to_csv(os.path.join(output_dir, f"{file_prefix}_cluster_{i+1}.csv"), index=False)
+            df_sub.to_csv(os.path.join(output_dir, f"{file_prefix}_cluster_{i + 1}.csv"), index=False)
     else:
         df_clusters.to_csv(os.path.join(output_dir, f"{file_prefix}_k{n_clusters}.csv"), index=False)
     return df_clusters
-    
+
 
 def plot_selected_genes(vrnn, data_tensor, gene_names, genes_of_interest, device):
     vrnn.eval()
