@@ -1,3 +1,5 @@
+# Dependencies for VRNN gene clustering
+# Note: Earlier commit message referenced CI workflow, but no CI is included.
 numpy>=1.20
 pandas>=1.3
 matplotlib>=3.4
