@@ -2,8 +2,8 @@
 
 This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene expression dynamics from single-cell ATAC-seq data. The learned latent space is used to cluster genes based on their dynamic profiles in response to stimulation (e.g., IFNγ). This enables identification of gene clusters (such as fast vs. slow responders like IRF1 vs. CXCL9/10) and downstream inference of potential cis-regulatory elements (CREs).
 
-# Why it matters?
-This project demonstrates how deep generative models can extract temporal regulatory patterns from single-cell data. By applying a VRNN to scATAC-seq, we cluster genes by dynamic behavior and highlight potential regulatory modules. The pipeline illustrates how computational modeling can guide hypotheses about cis-regulatory mechanisms in immune activation.
+Why it matters?
+It demonstrates how deep generative models can extract temporal regulatory patterns from single-cell data. By applying a VRNN to scATAC-seq, we cluster genes by dynamic behavior and highlight potential regulatory modules. The pipeline illustrates how computational modeling can guide hypotheses about cis-regulatory mechanisms in immune activation.
 
 ## Quick Start
 
@@ -21,16 +21,16 @@ pip install -r requirements.txt
 python main.py --input data/sample_GSE164498_subset.csv --output results/demo.png
 ```
 
-## Project Goal
-We aim to:
+## Project Goals  
 
-Capture latent dynamics from time-series scRNA-seq data using VRNNs.
+This project applies deep generative modeling to uncover regulatory insights from single-cell time-series data. Specifically, we aim to:  
 
-Cluster genes based on their latent representations over time.
+- **Model temporal dynamics** of gene activity using a Variational Recurrent Neural Network (VRNN), capturing how accessibility changes in response to stimulation.  
+- **Cluster genes by latent dynamics**, revealing modules of fast vs. slow responders (e.g., IRF1 vs. CXCL9/10).  
+- **Identify co-regulated modules** of genes with similar activity profiles, providing candidates for follow-up cis-regulatory element (CRE) analysis.  
+- **Bridge computational outputs with biology** by linking clusters to immune activation pathways and regulatory mechanisms.  
 
-Identify genes with similar expression dynamics to candidate genes (e.g., IRF1, CXCL9, CXCL10).
-
-Enable follow-up CRE analysis of these gene modules.
+Example of using the model to cluster 2000 most variable genes with k = 5:
 
 ![Clustering trajectories (from randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)
 ![Clustering results(overall range)](results/figures/2000_genes_k=5_range.png)
