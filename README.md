@@ -1,6 +1,9 @@
-# VRNN_Gene_Clustering for Single-Cell RNA Seq
+# VRNN_Gene_Clustering for Single-Cell ATAC-Seq
 
 This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene expression dynamics from single-cell ATAC-seq data. The learned latent space is used to cluster genes based on their dynamic profiles in response to stimulation (e.g., IFNγ). This enables identification of gene clusters (such as fast vs. slow responders like IRF1 vs. CXCL9/10) and downstream inference of potential cis-regulatory elements (CREs).
+
+# Why it matters?
+This project demonstrates how deep generative models can extract temporal regulatory patterns from single-cell data. By applying a VRNN to scATAC-seq, we cluster genes by dynamic behavior and highlight potential regulatory modules. The pipeline illustrates how computational modeling can guide hypotheses about cis-regulatory mechanisms in immune activation.
 
 ## Quick Start
 
