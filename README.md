@@ -4,7 +4,9 @@ This repository implements a Variational Recurrent Neural Network (VRNN) to mode
 
 ## Why It Matters  
 
-Immune response genes often display distinct temporal patterns: some activate within minutes, while others turn on hours later. We hypothesize that these differences are regulated by distinct cis-regulatory elements, which coordinate timing and magnitude of gene expression. By applying a VRNN to scATAC-seq data, we capture latent temporal dynamics, cluster genes by behavior, and highlight potential regulatory modules. This pipeline demonstrates how deep generative models can guide biological hypothesis generation, linking computational predictions to mechanisms of immune activation.  
+Immune response genes often display distinct temporal patterns: some activate rapidly within minutes, while others turn on hours later. For example, **IRF1 is a fast responder to IFNγ stimulation, while CXCL9 and CXCL10 are slower and more heterogeneous in their activation trajectories** ([Naigles et al., 2023](https://pubmed.ncbi.nlm.nih.gov/37689116/)). These differences suggest regulation by distinct cis-regulatory elements (CREs), which coordinate both the timing and magnitude of gene expression.  
+
+By applying a VRNN to scATAC-seq data, this project captures latent temporal dynamics, clusters genes by behavior, and highlights potential regulatory modules. In doing so, it demonstrates how deep generative models can generate biologically testable hypotheses about CREs and their roles in immune activation.  
 
 ---
 
