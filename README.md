@@ -33,7 +33,7 @@ This project applies deep generative modeling to uncover regulatory insights fro
 - **Identify co-regulated modules** of genes with similar activity profiles, providing candidates for follow-up cis-regulatory element (CRE) analysis.
 - **Bridge computational outputs with biology** by linking clusters to immune activation pathways and regulatory mechanisms.  
 
-**Example outputs**L clustering the 2000 most variable genes with k = 5.
+**Example outputs**: clustering the 2000 most variable genes with k = 5.
 
 ![Clustering trajectories (from randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)
 ![Clustering results(overall range)](results/figures/2000_genes_k=5_range.png)
@@ -74,10 +74,27 @@ pip install -r requirements.txt
 
 ## Input Data Format
 
-The ATAC-seq dataset is structured with metadata columns (Cell_ID, CellType, Time_numerics) followed by a gene activity (accessibility) matrix, where each column represents a gene and each entry reflects the accessibility score inferred for that gene in a given cell.
+The ATAC-seq dataset is structured with metadata columns (`Cell_ID`, `CellType`, `Time_numerics`) followed by a gene activity (accessibility) matrix.  
+Each column represents a gene, and each entry reflects the accessibility score inferred for that gene in a given cell.  
 
-By default, the model uses the first 1000 genes after column index 3. You can modify this in main.py.
-Make sure to sort the cells by time nuumerics (earliest to latest) as this model assumes cells are ordered by time. 
+- By default, the model uses the first 1000 genes after column index 3 (modifiable in `main.py`).  
+- Cells must be sorted by `Time_numerics` (earliest to latest), as the VRNN assumes chronological ordering.  
+
+```{python, eval=FALSE}
+import pandas as pd
+
+# Example of expected structure
+data = pd.DataFrame({
+    "Cell_ID": ["cell_1", "cell_2", "cell_3"],
+    "CellType": ["macrophage", "macrophage", "macrophage"],
+    "Time_numerics": [0, 1, 2],
+    "GeneA": [0.1, 0.3, 0.5],
+    "GeneB": [0.0, 0.2, 0.7],
+    "GeneC": [0.05, 0.15, 0.25]
+})
+
+print(data.head())
+```
 
 ## Core Modules
 ``` 
@@ -104,12 +121,12 @@ train.py
 ```
 utils.py
 ```
-include methods that: 
-- create VRNN Cluster
-- plot the umap model based on latent clusters post-training
-- plot gene dynamics (default: gene_per_cluster = 10) to ensure appropriate clusters are formed
-- save each cluster to .csv format
-- plot selected genes based on gene names
+Provide helper methods that:
+- Create VRNN Cluster
+- Plot UMAP embeddings of latent clusters
+- Plot gene dynamics (default = 10 per cluster)
+- Export each cluster to .csv format
+- Visualize selected genes based on gene names
   
 ## License
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
