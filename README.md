@@ -1,9 +1,12 @@
 # VRNN_Gene_Clustering for Single-Cell ATAC-Seq
 
-This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene expression dynamics from single-cell ATAC-seq data. The learned latent space is used to cluster genes based on their dynamic profiles in response to stimulation (e.g., IFNγ). This enables identification of gene clusters (such as fast vs. slow responders like IRF1 vs. CXCL9/10) and downstream inference of potential cis-regulatory elements (CREs).
+This repository implements a Variational Recurrent Neural Network (VRNN) to model temporal gene activity dynamics from single-cell ATAC-seq data. The learned latent space is used to cluster genes based on their response profiles following stimulation (e.g., IFNγ). This enables the identification of gene modules—such as fast responders (e.g., IRF1) versus delayed responders (e.g., CXCL9/10)—and provides a framework for downstream inference of cis-regulatory elements (CREs) that may control these differences.
 
-Why it matters?
-It demonstrates how deep generative models can extract temporal regulatory patterns from single-cell data. By applying a VRNN to scATAC-seq, we cluster genes by dynamic behavior and highlight potential regulatory modules. The pipeline illustrates how computational modeling can guide hypotheses about cis-regulatory mechanisms in immune activation.
+## Why It Matters  
+
+Immune response genes often display distinct temporal patterns: some activate within minutes, while others turn on hours later. We hypothesize that these differences are regulated by distinct cis-regulatory elements, which coordinate timing and magnitude of gene expression. By applying a VRNN to scATAC-seq data, we capture latent temporal dynamics, cluster genes by behavior, and highlight potential regulatory modules. This pipeline demonstrates how deep generative models can guide biological hypothesis generation, linking computational predictions to mechanisms of immune activation.  
+
+---
 
 ## Quick Start
 
@@ -26,11 +29,11 @@ python main.py --input data/sample_GSE164498_subset.csv --output results/demo.pn
 This project applies deep generative modeling to uncover regulatory insights from single-cell time-series data. Specifically, we aim to:  
 
 - **Model temporal dynamics** of gene activity using a Variational Recurrent Neural Network (VRNN), capturing how accessibility changes in response to stimulation.  
-- **Cluster genes by latent dynamics**, revealing modules of fast vs. slow responders (e.g., IRF1 vs. CXCL9/10).  
-- **Identify co-regulated modules** of genes with similar activity profiles, providing candidates for follow-up cis-regulatory element (CRE) analysis.  
+- **Cluster genes by latent dynamics**, revealing modules of fast vs. slow responders (e.g., IRF1 vs. CXCL9/10).
+- **Identify co-regulated modules** of genes with similar activity profiles, providing candidates for follow-up cis-regulatory element (CRE) analysis.
 - **Bridge computational outputs with biology** by linking clusters to immune activation pathways and regulatory mechanisms.  
 
-Example of using the model to cluster 2000 most variable genes with k = 5:
+**Example outputs**L clustering the 2000 most variable genes with k = 5.
 
 ![Clustering trajectories (from randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)
 ![Clustering results(overall range)](results/figures/2000_genes_k=5_range.png)
