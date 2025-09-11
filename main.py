@@ -11,7 +11,7 @@ from src.utils import (
 )
 
 # Load data
-df = pd.read_csv("./data/top_2000_most_variable_genes_RNAseq.csv")
+df = pd.read_csv("./data/sample_GSE164498_subset.csv")
 gene_columns = df.columns[3:1003]
 time_column = "Time_numeric"
 cell_id_column = "PseudoCellID"
