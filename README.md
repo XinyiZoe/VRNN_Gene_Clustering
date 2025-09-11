@@ -35,10 +35,17 @@ This project applies deep generative modeling to uncover regulatory insights fro
 - **Identify co-regulated modules** of genes with similar activity profiles, providing candidates for follow-up cis-regulatory element (CRE) analysis.
 - **Bridge computational outputs with biology** by linking clusters to immune activation pathways and regulatory mechanisms.  
 
-**Example outputs**: clustering the 2000 most variable genes with k = 5.
+**Example outputs:** Clustering of the 2000 most variable genes (*k* = 5).  
 
-![Clustering trajectories (from randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)
-![Clustering results(overall range)](results/figures/2000_genes_k=5_range.png)
+- **Figure 1A**: Trajectories of randomly selected genes from each cluster, illustrating representative dynamic patterns.  
+- **Figure 1B**: Summary of all clusters, showing the maximum and minimum trajectories within each group to highlight overall range and variability.  
+
+**Figure 1A:**  
+![Clustering trajectories (randomly selected genes per cluster)](results/figures/2000_genes_k=5.png)  
+
+**Figure 1B:**  
+![Clustering results (overall range)](results/figures/2000_genes_k=5_range.png)  
+
 
 ## Data
 
